@@ -1,9 +1,0 @@
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="jonathan"
-plugins=(git)
-source $ZSH/oh-my-zsh.sh
-alias m="make"
-alias v="valgrind -s --leak-check=full"
-alias addalias="nano ~/.zshrc"
-alias sync_git="~/sync_git.sh"
-alias e="exit"

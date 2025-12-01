@@ -1,4 +1,0 @@
-kc ALL=(ALL) ALL
-%wheel ALL=(ALL) ALL
-#1009 ALL=(ALL) ALL
-%#4242 ALL=(ALL) ALL
