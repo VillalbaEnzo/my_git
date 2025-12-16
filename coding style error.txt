@@ -1,0 +1,69 @@
+make fclean
+make: *** No rule to make target 'style'.  Stop.
+make: *** Waiting for unfinished jobs....
+make[1]: Entering directory '/home/enzovillalba/Desktop/tek1/GraphicalC/MyRadar/G-MUL-100-LYN-1-1-myradar-31'
+rm -f src/create.o src/destroy.o src/events.o src/game.o src/main.o src/init.o src/utils/mini_printf.o src/utils/my_put_nbr.o src/utils/my_putchar.o src/utils/my_putstr.o src/utils/my_strcmp.o src/utils/my_revstr.o src/utils/unsigned_int_to_str.o src/utils/my_strlen.o src/utils/my_strcpy.o src/utils/my_getnbr.o src/utils/free_sprite_node.o src/utils/my_str_to_word_array.o src/utils/free_array.o src/utils/collision.o config/get_plane_config.o src/objets/background.o src/objets/plane_tower.o src/objets/plane.o src/objets/window.o src/objets/clock.o src/quadtree/create_quadtree.o src/quadtree/destroy_quadtree.o src/quadtree/get_index.o src/quadtree/get_planes_in_area.o src/quadtree/insert.o src/quadtree/split.o
+rm -f my_radar
+make[1]: Leaving directory '/home/enzovillalba/Desktop/tek1/GraphicalC/MyRadar/G-MUL-100-LYN-1-1-myradar-31'
+make all
+make[1]: Entering directory '/home/enzovillalba/Desktop/tek1/GraphicalC/MyRadar/G-MUL-100-LYN-1-1-myradar-31'
+epiclang -Wall -Wextra -I include -g3   -c -o src/create.o src/create.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/destroy.o src/destroy.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/events.o src/events.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/game.o src/game.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/main.o src/main.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/init.o src/init.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/utils/mini_printf.o src/utils/mini_printf.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/utils/my_put_nbr.o src/utils/my_put_nbr.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/utils/my_putchar.o src/utils/my_putchar.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/utils/my_putstr.o src/utils/my_putstr.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/utils/my_strcmp.o src/utils/my_strcmp.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/utils/my_revstr.o src/utils/my_revstr.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/utils/unsigned_int_to_str.o src/utils/unsigned_int_to_str.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/utils/my_strlen.o src/utils/my_strlen.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/utils/my_strcpy.o src/utils/my_strcpy.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/utils/my_getnbr.o src/utils/my_getnbr.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/utils/free_sprite_node.o src/utils/free_sprite_node.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/utils/my_str_to_word_array.o src/utils/my_str_to_word_array.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/utils/free_array.o src/utils/free_array.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/utils/collision.o src/utils/collision.c
+epiclang -Wall -Wextra -I include -g3   -c -o config/get_plane_config.o config/get_plane_config.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/objets/background.o src/objets/background.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/objets/plane_tower.o src/objets/plane_tower.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/objets/plane.o src/objets/plane.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/objets/window.o src/objets/window.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/objets/clock.o src/objets/clock.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/quadtree/create_quadtree.o src/quadtree/create_quadtree.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/quadtree/destroy_quadtree.o src/quadtree/destroy_quadtree.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/quadtree/get_index.o src/quadtree/get_index.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/quadtree/get_planes_in_area.o src/quadtree/get_planes_in_area.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/quadtree/insert.o src/quadtree/insert.c
+epiclang -Wall -Wextra -I include -g3   -c -o src/quadtree/split.o src/quadtree/split.c
+src/utils/collision.c:32:1: warning: [Banana] [Major] 21st line in the function (C-F4)
+   32 |         tmp = tmp->next;
+      | ^
+src/utils/collision.c:33:1: warning: [Banana] [Major] 22nd line in the function (C-F4)
+   33 |     }
+      | ^
+src/utils/collision.c:34:1: warning: [Banana] [Major] 23rd line in the function (C-F4)
+   34 |     return false;
+      | ^
+src/utils/collision.c:37:30: warning: [Banana] [Major] structure received by copy (C-F7)
+   37 | static void check_intersects(sfFloatRect area, sfFloatRect other_box,
+      |                              ^
+src/utils/collision.c:37:48: warning: [Banana] [Major] structure received by copy (C-F7)
+   37 | static void check_intersects(sfFloatRect area, sfFloatRect other_box,
+      |                                                ^
+5 warnings generated.
+src/quadtree/insert.c:51:1: warning: [Banana] [Major] 21st line in the function (C-F4)
+   51 |         split(node);
+      | ^
+src/quadtree/insert.c:52:1: warning: [Banana] [Major] 22nd line in the function (C-F4)
+   52 |         redistribute_planes(node);
+      | ^
+src/quadtree/insert.c:53:1: warning: [Banana] [Major] 23rd line in the function (C-F4)
+   53 |     }
+      | ^
+3 warnings generated.
+epiclang src/create.o src/destroy.o src/events.o src/game.o src/main.o src/init.o src/utils/mini_printf.o src/utils/my_put_nbr.o src/utils/my_putchar.o src/utils/my_putstr.o src/utils/my_strcmp.o src/utils/my_revstr.o src/utils/unsigned_int_to_str.o src/utils/my_strlen.o src/utils/my_strcpy.o src/utils/my_getnbr.o src/utils/free_sprite_node.o src/utils/my_str_to_word_array.o src/utils/free_array.o src/utils/collision.o config/get_plane_config.o src/objets/background.o src/objets/plane_tower.o src/objets/plane.o src/objets/window.o src/objets/clock.o src/quadtree/create_quadtree.o src/quadtree/destroy_quadtree.o src/quadtree/get_index.o src/quadtree/get_planes_in_area.o src/quadtree/insert.o src/quadtree/split.o -o my_radar -lcsfml-graphics -lcsfml-system -lcsfml-audio -lcsfml-window -lm
+make[1]: Leaving directory '/home/enzovillalba/Desktop/tek1/GraphicalC/MyRadar/G-MUL-100-LYN-1-1-myradar-31'
