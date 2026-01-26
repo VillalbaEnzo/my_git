@@ -1,27 +1,4 @@
-# Prerequisites
-*.d
-
-# Object files
 *.o
-
-# Libraries
-*.a
-
-# Shared objects (inc. Windows DLLs)
-*.dylib
-
-# Executables
-my_top
-
-# Debug files
-*.dSYM/
-
-# Editor and IDE files
-*~
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Logs
-*.log
+secured
+test
+libhashtable.a
