@@ -1,4 +1,6 @@
-*.o
-secured
-test
-libhashtable.a
+# Secrets
+.env
+config/google_key.json
+config/o365_token.txt
+#useless
+venv/
