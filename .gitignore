@@ -1,10 +1,6 @@
-*.o
-secured
-test
-libhashtable.a
-.gcda
-.gcno
 # Prerequisites
+amazed
+labyrinth
 *.d
 
 # Object files
