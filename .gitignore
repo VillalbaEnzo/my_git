@@ -1,7 +1,6 @@
 # Prerequisites
-amazed
-labyrinth
 *.d
+.vscode/
 
 # Object files
 *.o
@@ -37,6 +36,7 @@ labyrinth
 *.i*86
 *.x86_64
 *.hex
+a.out
 
 # Debug files
 *.dSYM/
@@ -55,3 +55,5 @@ dkms.conf
 
 # debug information files
 *.dwo
+unit_tests
+my_printf
