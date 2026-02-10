@@ -1,6 +1,8 @@
+mysh
+tester/
+
 # Prerequisites
 *.d
-.vscode/
 
 # Object files
 *.o
@@ -36,7 +38,6 @@
 *.i*86
 *.x86_64
 *.hex
-a.out
 
 # Debug files
 *.dSYM/
@@ -55,5 +56,3 @@ dkms.conf
 
 # debug information files
 *.dwo
-unit_tests
-my_printf
