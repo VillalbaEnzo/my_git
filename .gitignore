@@ -1,6 +1,7 @@
+mysh
+tester/
+
 # Prerequisites
-amazed
-labyrinth
 *.d
 
 # Object files
