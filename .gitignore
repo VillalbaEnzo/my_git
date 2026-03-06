@@ -1,4 +1,5 @@
 # Prerequisites
+*.legend
 *.d
 my_world
 # Object files
