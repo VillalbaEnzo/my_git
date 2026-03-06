@@ -1,7 +1,9 @@
 # Prerequisites
-*.legend
+amazed
+amazed_test
+labyrinth
 *.d
-my_world
+
 # Object files
 *.o
 *.ko
