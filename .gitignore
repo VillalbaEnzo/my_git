@@ -1,9 +1,7 @@
-mysh
-tester/
-
 # Prerequisites
+*.legend
 *.d
-
+my_world
 # Object files
 *.o
 *.ko
