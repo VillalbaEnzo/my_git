@@ -1,4 +1,5 @@
 *.o
+*.sh
 42sh
 libutils.a
 libbuiltin.a
