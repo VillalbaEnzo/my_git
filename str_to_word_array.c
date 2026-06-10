@@ -7,6 +7,7 @@
 
 #include "my.h"
 
+
 static int is_delim(char c, char *delims)
 {
     if (!delims)
@@ -47,7 +48,7 @@ static char *word_dup(char *str, int start, int end)
     return word;
 }
 
-static char **fill_array(char *str, char *delims, char **array)
+static char **fill_array_str(char *str, char *delims, char **array)
 {
     int j = 0;
     int start = -1;
@@ -82,5 +83,5 @@ char **str_to_word_array(char *str, char *delims)
     array = malloc(sizeof(char *) * (words + 1));
     if (!array)
         return NULL;
-    return fill_array(str, delims, array);
+    return fill_array_str(str, delims, array);
 }
