@@ -1,0 +1,204 @@
+scanf
+ALGORITHME MIXWORD
+
+ENTRÉE :
+    listeMots
+    tailleGrille
+
+SORTIE :
+    grille remplie
+    nbMotsPlaces
+
+--------------------------------------------------
+
+FONCTION lettreAléatoire()
+
+    RETOURNER une lettre entre 'a' et 'z'
+
+FIN FONCTION
+FONCTION placementValide(
+            mot,
+            ligne,
+            colonne,
+            direction)
+
+    dx ← direction.x
+    dy ← direction.y
+
+    POUR i DE 0 À longueur(mot)-1
+
+        x ← ligne + i * dx
+        y ← colonne + i * dy
+
+        SI x hors grille
+            RETOURNER FAUX
+
+        SI y hors grille
+            RETOURNER FAUX
+
+        SI grille[x][y] ≠ VIDE
+           ET grille[x][y] ≠ mot[i]
+
+            RETOURNER FAUX
+
+        FIN SI
+
+    FIN POUR
+
+    RETOURNER VRAI
+
+FIN FONCTION
+
+Fonction calculerScore
+
+FONCTION calculerScore(
+            mot,
+            ligne,
+            colonne,
+            direction)
+
+    score ← 0
+
+    dx ← direction.x
+    dy ← direction.y
+
+    POUR i DE 0 À longueur(mot)-1
+
+        x ← ligne + i * dx
+        y ← colonne + i * dy
+
+        SI grille[x][y] = mot[i]
+
+            score ← score + 1
+
+        FIN SI
+
+    FIN POUR
+
+    RETOURNER score
+
+FIN FONCTION
+
+Fonction placerMot
+
+FONCTION placerMot(
+            mot,
+            placement)
+
+    dx ← placement.direction.x
+    dy ← placement.direction.y
+
+    ligne ← placement.ligne
+    colonne ← placement.colonne
+
+    POUR i DE 0 À longueur(mot)-1
+
+        x ← ligne + i * dx
+        y ← colonne + i * dy
+
+        grille[x][y] ← mot[i]
+
+    FIN POUR
+
+FIN FONCTION
+
+-----------------MAIN-----------------
+
+Créer une grille tailleGrille × tailleGrille
+Remplir toutes les cases avec VIDE
+
+nbMotsPlaces ← 0
+
+Trier listeMots par longueur décroissante
+
+directions ← [
+    ( 0,  1),   // →
+    ( 0, -1),   // ←
+    ( 1,  0),   // ↓
+    (-1,  0),   // ↑
+    ( 1,  1),   // ↘
+    (-1, -1),   // ↖
+    (-1,  1),   // ↗
+    ( 1, -1)    // ↙
+]
+
+--------------------------------------------------
+
+POUR CHAQUE mot DANS listeMots
+
+    meilleurScore ← -1
+    meilleurPlacement ← AUCUN
+
+    POUR ligne DE 0 À tailleGrille - 1
+
+        POUR colonne DE 0 À tailleGrille - 1
+
+            POUR CHAQUE direction DANS directions
+
+                SI placementValide(
+                        mot,
+                        ligne,
+                        colonne,
+                        direction
+                   )
+
+                    score ← calculerScore(
+                                mot,
+                                ligne,
+                                colonne,
+                                direction
+                             )
+
+                    SI score > meilleurScore
+
+                        meilleurScore ← score
+
+                        meilleurPlacement ←
+                            (ligne,
+                             colonne,
+                             direction)
+
+                    FIN SI
+
+                FIN SI
+
+            FIN POUR
+
+        FIN POUR
+
+    FIN POUR
+
+    SI meilleurPlacement existe
+
+        placerMot(
+            mot,
+            meilleurPlacement
+        )
+
+        nbMotsPlaces ← nbMotsPlaces + 1
+
+    FIN SI
+
+FIN POUR
+
+--------------------------------------------------
+
+POUR CHAQUE case de la grille
+
+    SI case est VIDE
+
+        case ← lettreAléatoire()
+
+    FIN SI
+
+FIN POUR
+
+--------------------------------------------------
+
+Afficher :
+    nbMotsPlaces /
+    nombreTotalDeMots
+
+Afficher la grille
+
+FIN
