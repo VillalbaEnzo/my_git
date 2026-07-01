@@ -1,0 +1,72 @@
+services:
+  web:
+    build: ./web
+    container_name: transalp_web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      DB_HOST: mysql
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+      AI_WORKER_URL: http://ai-worker:8000
+    depends_on:
+      - mysql
+      - ai-worker
+    volumes:
+      - ./web/src:/app/src
+      - ./web/package.json:/app/package.json
+      - uploads_data:/app/uploads
+
+  ai-worker:
+    build: ./ai-worker
+    container_name: transalp_ai_worker
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      OLLAMA_URL: http://ollama:11434
+      OLLAMA_MODEL: mistral:7b-instruct
+      OLLAMA_VISION_MODEL: llava:7b
+      NODE_CALLBACK_URL: http://web:3000/api/internal/ai-result
+      DB_HOST: mysql
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+    depends_on:
+      - ollama
+      - mysql
+    volumes:
+      - ./ai-worker:/app
+      - uploads_data:/app/uploads
+
+  mysql:
+    image: mysql:8
+    container_name: transalp_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  ollama:
+    image: ollama/ollama
+    container_name: transalp_ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+volumes:
+  mysql_data:
+  ollama_data:
+  uploads_data:
