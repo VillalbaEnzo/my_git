@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS tickets (
+    id                  INT AUTO_INCREMENT PRIMARY KEY,
+    nc_number           VARCHAR(50) UNIQUE,
+    email               VARCHAR(255) NOT NULL,
+    profil              ENUM('client','fournisseur','interne') NOT NULL,
+    description         TEXT,
+    ai_type_nc          VARCHAR(100),
+    ai_cause            VARCHAR(100),
+    ai_action_generale  VARCHAR(100),
+    ai_service_impacte  VARCHAR(100),
+    ai_resume           TEXT,
+    ai_confiance        DECIMAL(4,3),
+    ai_errors           JSON,
+    ai_visual_analyses  JSON,
+    gravity_score       TINYINT UNSIGNED,
+    gravity_label       VARCHAR(50),
+    gravity_detail      JSON,
+    status              VARCHAR(50) DEFAULT 'pending_ai',
+    created_at          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at          TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
