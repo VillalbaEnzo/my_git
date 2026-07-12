@@ -1,0 +1,100 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: madevpass-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: madevpass
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - madevpass-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: madevpass-ollama
+    ports:
+      - "11435:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - madevpass-network
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  ai-service:
+    build: ./ai-service
+    container_name: madevpass-ai
+    ports:
+      - "8001:8000"
+    environment:
+      - AI_OLLAMA_BASE_URL=http://ollama:11434
+      - AI_OLLAMA_MODEL=minicpm-v
+    depends_on:
+      ollama:
+        condition: service_healthy
+    networks:
+      - madevpass-network
+    volumes:
+      - ./ai-service:/app
+
+  server:
+    build: ./server
+    container_name: madevpass-server
+    env_file:
+      - ./server/.env
+    environment:
+      - DATABASE_URL=mysql://user:password@mysql:3306/madevpass
+      - AI_SERVICE_URL=http://ai-service:8000
+      - AI_JOB_SUBMIT_TIMEOUT_MS=30000
+      - AI_JOB_POLL_TIMEOUT_MS=10000
+      - AI_JOB_POLL_INTERVAL_MS=15000
+      - AI_JOB_MAX_WAIT_MS=1200000
+      - PORT=3001
+    ports:
+      - "3001:3001"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - ./server:/app
+      - server_node_modules:/app/node_modules
+    networks:
+      - madevpass-network
+
+  client:
+    build: ./client
+    container_name: madevpass-client
+    environment:
+      - VITE_API_PROXY_TARGET=http://server:3001
+    ports:
+      - "3002:3000"
+    depends_on:
+      - server
+    volumes:
+      - ./client:/app
+      - client_node_modules:/app/node_modules
+    networks:
+      - madevpass-network
+
+networks:
+  madevpass-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  ollama_data:
+  server_node_modules:
+  client_node_modules:

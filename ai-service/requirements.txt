@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+python-multipart
+opencv-python-headless
+numpy
+mrz
+requests
+pydantic
+pydantic-settings
+pypdf
+
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+
+sentence-transformers
